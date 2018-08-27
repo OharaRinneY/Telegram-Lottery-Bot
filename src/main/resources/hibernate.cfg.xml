@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--1.链接数据库信息-->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/lottery?useSSL=false</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"></property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!--2.hibernate可选配置-->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">false</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>
+
+        <!-- 最大连接数 -->
+        <property name="hibernate.c3p0.max_size">20</property>
+        <!-- 最小连接数 -->
+        <property name="hibernate.c3p0.min_size">5</property>
+        <!-- 获得连接的超时时间,如果超过这个时间,会抛出异常，单位秒 -->
+        <property name="hibernate.c3p0.timeout">120</property>
+        <!-- 最大的PreparedStatement的数量 -->
+        <property name="hibernate.c3p0.max_statements">100</property>
+        <!-- 每隔120秒检查连接池里的空闲连接，单位是秒-->
+        <property name="hibernate.c3p0.idle_test_period">120</property>
+        <!-- 当连接池里面的连接用完的时候，C3P0一下获取的新的连接数 -->
+        <property name="hibernate.c3p0.acquire_increment">2</property>
+        <!-- 每次都验证连接是否可用 -->
+        <property name="hibernate.c3p0.validate">true</property>
+
+
+
+        <mapping resource="Lottery.hbm.xml"/>
+        <mapping resource="User.hbm.xml"/>
+
+
+    </session-factory>
+</hibernate-configuration>
