@@ -6,7 +6,7 @@
 
     <class name="moe.yiheng.pojo.Lottery" table="lottery" schema="lottery">
         <id name="uuid" column="uuid">
-            <generator class="uuid"/>
+            <generator class="assigned"/>
         </id>
         <many-to-one name="createdByUser" class="moe.yiheng.pojo.User" column="creater_id"/>
         <property name="name" column="name"/>

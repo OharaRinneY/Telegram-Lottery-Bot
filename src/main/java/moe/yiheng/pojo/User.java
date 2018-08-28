@@ -62,18 +62,6 @@ public class User {
     }
 
     @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", firstname='" + firstname + '\'' +
-                ", status=" + status +
-                ", joinedLotteries=" + joinedLotteries +
-                ", createdLotteries=" + createdLotteries +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -81,13 +69,21 @@ public class User {
         return Objects.equals(id, user.id) &&
                 Objects.equals(username, user.username) &&
                 Objects.equals(firstname, user.firstname) &&
-                Objects.equals(status, user.status) &&
-                Objects.equals(joinedLotteries, user.joinedLotteries) &&
-                Objects.equals(createdLotteries, user.createdLotteries);
+                Objects.equals(status, user.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, firstname, status, joinedLotteries, createdLotteries);
+        return Objects.hash(id, username, firstname, status);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", status=" + status +
+                '}';
     }
 }

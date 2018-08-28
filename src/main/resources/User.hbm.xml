@@ -15,7 +15,7 @@
             <key column="user_id"/>
             <many-to-many class="moe.yiheng.pojo.Lottery" column="lottery_id"/>
         </set>
-        <set name="createdLotteries" >
+        <set name="createdLotteries" lazy="false">
             <key column="creater_id"/>
             <one-to-many class="moe.yiheng.pojo.Lottery" />
         </set>
