@@ -14,6 +14,8 @@ public class CommandFactory {
                 return new StartCommand(message, user);
             case "/my":
                 return new MyCommand(message, user);
+            case "/reset":
+                return new ResetCommand(message, user);
             default:
                 throw new CommandNotFoundException();
         }

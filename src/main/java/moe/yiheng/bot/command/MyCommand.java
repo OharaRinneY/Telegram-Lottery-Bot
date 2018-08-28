@@ -15,9 +15,6 @@ import java.util.Set;
 
 public class MyCommand extends Command {
 
-    private MyBot bot;
-    private UserService userService;
-    private LotteryService lotteryService;
 
     @Override
     public void handle() {
@@ -35,9 +32,6 @@ public class MyCommand extends Command {
 
     public MyCommand(Message message, User user) {
         super(message, user);
-        bot = (MyBot) SpringUtils.getBean("myBot");
-        userService = (UserService) SpringUtils.getBean("userService");
-        lotteryService = (LotteryService) SpringUtils.getBean("lotteryService");
     }
 
 }

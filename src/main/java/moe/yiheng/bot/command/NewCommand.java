@@ -19,9 +19,11 @@ public class NewCommand extends Command{
 
     private Message message = getMessage();
     private User user = getUser();
-    private MyBot bot;
-    private UserService userService;
-    private LotteryService lotteryService;
+
+    public NewCommand(Message message, User user) {
+        super(message, user);
+    }
+
     @Override
     public void handle() {
         if (message.getText().equals("/new")) {
@@ -33,7 +35,7 @@ public class NewCommand extends Command{
             }
             user.setStatus(UserStatus.CREATING.getIndex());
             userService.update(user);
-            bot.executeWithoutException(new SendMessage(message.getChatId(), "正在创建抽奖,请发送抽奖的名称"));
+            bot.executeWithoutException(new SendMessage(message.getChatId(), "正在创建抽奖,请发送抽奖的名称\n使用 /reset 退出创建"));
         } else if (message.hasText()) { // 收到的是抽奖名称
             if (message.getText().length() >= 3 && message.getText().length() <= 200) {
                 Lottery lottery = new Lottery();
@@ -49,11 +51,9 @@ public class NewCommand extends Command{
                         .append(message.getFrom().getUserName())
                         .append(" 创建的抽奖\n")
                         .append("唯一抽奖ID(可与开奖时比对):")
-                        .append(lottery.getUuid().hashCode())
-                        .append("\n点击以下链接即可加入\nhttps://t.me/")
-                        .append(bot.getBotUsername())
-                        .append("?start=")
-                        .append(lottery.getUuid())
+                        .append(CommonUtils.generateId(lottery.getUuid()))
+                        .append("\n点击以下链接即可加入\n")
+                        .append(CommonUtils.generateInviteLink(bot.getBotUsername(),lottery.getUuid()))
                         .toString();
                 bot.executeWithoutException(new SendMessage(message.getChatId(),msg));
             } else {
@@ -64,11 +64,6 @@ public class NewCommand extends Command{
 
     }
 
-    public NewCommand(Message message, User user) {
-        super(message, user);
-        bot = (MyBot) SpringUtils.getBean("myBot");
-        userService = (UserService) SpringUtils.getBean("userService");
-        lotteryService = (LotteryService) SpringUtils.getBean("lotteryService");
-    }
+
 
 }

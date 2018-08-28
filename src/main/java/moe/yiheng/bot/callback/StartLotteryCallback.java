@@ -21,6 +21,13 @@ public class StartLotteryCallback extends Callback {
             bot.executeWithoutException(new SendMessage(callbackQuery.getMessage().getChatId(), "出现错误,无法找到该抽奖"));
             return;
         }
+        if (lottery.getJoinedUsers().size() <= 1) {
+            bot.executeWithoutException(new EditMessageText()
+                    .setChatId(callbackQuery.getMessage().getChatId())
+                    .setMessageId(callbackQuery.getMessage().getMessageId())
+                    .setText("参与人数未满两人,无法开奖"));
+            return;
+        }
         bot.executeWithoutException(new EditMessageText()
                 .setChatId(callbackQuery.getMessage().getChatId())
                 .setMessageId(callbackQuery.getMessage().getMessageId())

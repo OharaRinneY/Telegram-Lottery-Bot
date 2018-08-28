@@ -19,4 +19,12 @@ public class CommonUtils {
         });
         return activeLotteries;
     }
+
+    public static String generateId(String uuid) {
+        return MD5Utils.md5(uuid).substring(0,12).toUpperCase();
+    }
+
+    public static String generateInviteLink(String botName,String uuid) {
+        return new StringBuilder("https://t.me/").append(botName).append("?start=").append(uuid).toString();
+    }
 }
