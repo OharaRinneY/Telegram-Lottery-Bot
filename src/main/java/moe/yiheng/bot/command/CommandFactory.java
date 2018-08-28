@@ -12,6 +12,8 @@ public class CommandFactory {
                 return new NewCommand(message, user);
             case "/start":
                 return new StartCommand(message, user);
+            case "/my":
+                return new MyCommand(message, user);
             default:
                 throw new CommandNotFoundException();
         }

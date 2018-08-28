@@ -41,6 +41,7 @@ public class MyBot extends TelegramLongPollingBot {
             user.setUsername(message.getFrom().getUserName());
             user.setStatus(UserStatus.NOTHING.getIndex());
             userService.add(user);
+            user = userService.findById(message.getFrom().getId());
         }
         if (message.isCommand()) {
             try {
