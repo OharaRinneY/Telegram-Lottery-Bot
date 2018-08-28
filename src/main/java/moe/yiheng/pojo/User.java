@@ -7,7 +7,25 @@ public class User {
     private String username;
     private String firstname;
 
-    private Set<Lottery> lotteries;
+    private Set<Lottery> joinedLotteries;
+
+    private Set<Lottery> createdLotteries;
+
+    public Set<Lottery> getJoinedLotteries() {
+        return joinedLotteries;
+    }
+
+    public void setJoinedLotteries(Set<Lottery> joinedLotteries) {
+        this.joinedLotteries = joinedLotteries;
+    }
+
+    public Set<Lottery> getCreatedLotteries() {
+        return createdLotteries;
+    }
+
+    public void setCreatedLotteries(Set<Lottery> createdLotteries) {
+        this.createdLotteries = createdLotteries;
+    }
 
     public Integer getId() {
         return id;
@@ -33,11 +51,5 @@ public class User {
         this.firstname = firstname;
     }
 
-    public Set<Lottery> getLotteries() {
-        return lotteries;
-    }
 
-    public void setLotteries(Set<Lottery> lotteries) {
-        this.lotteries = lotteries;
-    }
 }

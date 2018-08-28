@@ -10,10 +10,13 @@
         </id>
         <property name="username" column="username"/>
         <property name="firstname" column="firstname"/>
-        <set name="lotteries" table="user_lottery">
+        <set name="joinedLotteries" table="user_lottery">
             <key column="user_id"/>
             <many-to-many class="moe.yiheng.pojo.Lottery" column="lottery_id"/>
         </set>
-
+        <set name="createdLotteries">
+            <key column="creater_id"/>
+            <one-to-many class="moe.yiheng.pojo.Lottery"/>
+        </set>
     </class>
 </hibernate-mapping>

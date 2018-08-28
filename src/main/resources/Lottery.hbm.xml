@@ -8,7 +8,7 @@
         <id name="uuid" column="uuid">
             <generator class="assigned"/>
         </id>
-        <one-to-one name="createdByUser" class="moe.yiheng.pojo.User"/>
+        <many-to-one name="createdByUser" class="moe.yiheng.pojo.User" column="creater_id"/>
         <property name="name" column="name"/>
         <set name="joinedUsers" table="user_lottery">
             <key column="lottery_id"/>

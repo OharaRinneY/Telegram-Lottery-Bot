@@ -10,15 +10,20 @@
 	http://www.springframework.org/schema/tx
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+    <context:property-placeholder location="classpath:config.properties"/>
+
     <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-        <!-- 引入hibernate的配置文件 -->
         <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
     </bean>
+
     <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <context:component-scan base-package="moe.yiheng.bot"/>
+    <bean class="moe.yiheng.bot.MyBot" id="myBot">
+        <property name="botUsername" value="${bot_username}"/>
+        <property name="botToken" value="${bot_token}"/>
+    </bean>
     <context:component-scan base-package="moe.yiheng.dao"/>
     <context:component-scan base-package="moe.yiheng.service"/>
 

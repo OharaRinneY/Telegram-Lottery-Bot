@@ -8,7 +8,7 @@
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/lottery?useSSL=false</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password"></property>
+        <property name="hibernate.connection.password">*********</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <!--2.hibernate可选配置-->
         <property name="hibernate.show_sql">true</property>

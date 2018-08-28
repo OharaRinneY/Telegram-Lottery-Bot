@@ -12,20 +12,16 @@ import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 
-@Component("myBot")
 public class MyBot extends TelegramLongPollingBot {
 
     @Autowired
     private UserService userService;
-    @Value("")
     private String botUsername;
-    @Value("")
     private String botToken;
 
     public void onUpdateReceived(Update update) {
         if (update == null) return;
         if (!update.hasMessage()) return;
-        System.out.println(userService);
         Message message = update.getMessage();
         if (message.getChat().isGroupChat() || message.getChat().isSuperGroupChat())
             leaveGroup(message);
@@ -54,5 +50,13 @@ public class MyBot extends TelegramLongPollingBot {
 
     public String getBotToken() {
         return botToken;
+    }
+
+    public void setBotUsername(String botUsername) {
+        this.botUsername = botUsername;
+    }
+
+    public void setBotToken(String botToken) {
+        this.botToken = botToken;
     }
 }
