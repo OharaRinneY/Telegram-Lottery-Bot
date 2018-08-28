@@ -27,7 +27,7 @@ public class Keyboards {
         InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
         List<InlineKeyboardButton> rowInline = new ArrayList<>();
-        rowInline.add(new InlineKeyboardButton().setText("开奖").setCallbackData("start|" + lottery.getUuid()));
+        rowInline.add(new InlineKeyboardButton().setText("开奖").setCallbackData("startLottery|" + lottery.getUuid()));
         rowInline.add(new InlineKeyboardButton().setText("取消此次抽奖").setCallbackData("delete|" + lottery.getUuid()));
         rowsInline.add(rowInline);
         markupInline.setKeyboard(rowsInline);
@@ -39,6 +39,17 @@ public class Keyboards {
         List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
         List<InlineKeyboardButton> rowInline = new ArrayList<>();
         rowInline.add(new InlineKeyboardButton().setText("确认").setCallbackData("confirmDelete|" + lottery.getUuid()));
+        rowInline.add(new InlineKeyboardButton().setText("取消").setCallbackData("cancel|" + lottery.getUuid()));
+        rowsInline.add(rowInline);
+        markupInline.setKeyboard(rowsInline);
+        return markupInline;
+    }
+
+    public static InlineKeyboardMarkup getConfirmStartKeyboard(Lottery lottery) {
+        InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
+        List<InlineKeyboardButton> rowInline = new ArrayList<>();
+        rowInline.add(new InlineKeyboardButton().setText("确认").setCallbackData("confirmStart|" + lottery.getUuid()));
         rowInline.add(new InlineKeyboardButton().setText("取消").setCallbackData("cancel|" + lottery.getUuid()));
         rowsInline.add(rowInline);
         markupInline.setKeyboard(rowsInline);

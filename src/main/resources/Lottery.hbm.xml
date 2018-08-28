@@ -10,7 +10,7 @@
         </id>
         <many-to-one name="createdByUser" class="moe.yiheng.pojo.User" column="creater_id"/>
         <property name="name" column="name"/>
-        <set name="joinedUsers" table="user_lottery">
+        <set name="joinedUsers" table="user_lottery" lazy="false">
             <key column="lottery_id"/>
             <many-to-many class="moe.yiheng.pojo.User" column="user_id"/>
         </set>

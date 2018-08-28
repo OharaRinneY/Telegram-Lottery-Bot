@@ -17,6 +17,12 @@ public class CallbackFactory {
                 return new DeleteCallback(callbackQuery, user);
             case "confirmDelete":
                 return new ConfirmDeleteCallback(callbackQuery, user);
+            case "cancel":
+                return new CancelCallback(callbackQuery, user);
+            case "startLottery":
+                return new StartLotteryCallback(callbackQuery, user);
+            case "confirmStart":
+                return new ConfirmStartCallback(callbackQuery, user);
             default:
                 throw new CallbackNotFoundException();
         }

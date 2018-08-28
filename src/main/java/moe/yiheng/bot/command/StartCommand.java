@@ -31,7 +31,10 @@ public class StartCommand extends Command {
                 userService.update(user);
                 String s = new StringBuilder("成功参与 @")
                         .append(lottery.getCreatedByUser().getUsername())
-                        .append(" 发起的抽奖")
+                        .append(" 发起的抽奖 ")
+                        .append(lottery.getName())
+                        .append("\n目前参与人数为:")
+                        .append(lottery.getJoinedUsers().size()+1) // 这里查出来没有带自己 所以+1
                         .toString();
                 bot.executeWithoutException(new SendMessage(message.getChatId(), s));
             }
