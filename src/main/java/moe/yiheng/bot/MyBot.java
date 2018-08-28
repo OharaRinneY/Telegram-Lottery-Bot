@@ -1,21 +1,29 @@
 package moe.yiheng.bot;
 
+import moe.yiheng.bot.command.Command;
+import moe.yiheng.bot.command.CommandFactory;
+import moe.yiheng.bot.command.NewCommand;
+import moe.yiheng.exceptions.CommandNotFoundException;
 import moe.yiheng.pojo.User;
+import moe.yiheng.pojo.UserStatus;
 import moe.yiheng.service.UserService;
+import moe.yiheng.utils.BotUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-import org.telegram.telegrambots.api.methods.groupadministration.LeaveChat;
+import org.telegram.telegrambots.api.methods.BotApiMethod;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Message;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 
+import java.io.Serializable;
+
 public class MyBot extends TelegramLongPollingBot {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private BotUtils botUtils;
     private String botUsername;
     private String botToken;
 
@@ -24,23 +32,41 @@ public class MyBot extends TelegramLongPollingBot {
         if (!update.hasMessage()) return;
         Message message = update.getMessage();
         if (message.getChat().isGroupChat() || message.getChat().isSuperGroupChat())
-            leaveGroup(message);
+            botUtils.leaveGroup(message);
         User user = userService.findById(message.getFrom().getId());
         if (user == null) { // user 不存在
             user = new User();
             user.setFirstname(message.getFrom().getFirstName());
             user.setId(message.getFrom().getId());
             user.setUsername(message.getFrom().getUserName());
+            user.setStatus(UserStatus.NOTHING.getIndex());
             userService.add(user);
         }
-    }
+        if (message.isCommand()) {
+            try {
+                Command command = CommandFactory.getCommand(message, user);
+                command.handle();
+            } catch (CommandNotFoundException e) {
+                executeWithoutException(new SendMessage(message.getChatId(), "无法识别的指令"));
+            }
+            return;
+        }
+        switch (UserStatus.getByIndex(user.getStatus())) {
+            case NOTHING:
+                executeWithoutException(new SendMessage(message.getChatId(), "无法识别您的命令"));
+                return;
+            case CREATING:
+                new NewCommand(message, user).handle();
 
-    private void leaveGroup(Message message) {
+        }
+    }
+    public <T extends Serializable, Method extends BotApiMethod<T>> T executeWithoutException(Method method) {
         try {
-            execute(new SendMessage(message.getChatId(), "该 bot 不能在群组中使用 即将退出该群组"));
-            execute(new LeaveChat().setChatId(message.getChatId()));
+            return execute(method);
         } catch (TelegramApiException e) {
             e.printStackTrace();
+        } finally {
+            return null;
         }
     }
 

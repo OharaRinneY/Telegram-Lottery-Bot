@@ -1,0 +1,7 @@
+package moe.yiheng.service;
+
+import moe.yiheng.pojo.Lottery;
+
+public interface LotteryService {
+    void save(Lottery lottery);
+}

@@ -13,4 +13,13 @@ public enum LotteryStatus {
     public int getIndex() {
         return index;
     }
+
+    public static LotteryStatus getByIndex(Integer index) {
+        for (LotteryStatus lotteryStatus : LotteryStatus.values()) {
+            if (index.equals(lotteryStatus.index)) {
+                return lotteryStatus;
+            }
+        }
+        throw new IllegalArgumentException("No enum found");
+    }
 }

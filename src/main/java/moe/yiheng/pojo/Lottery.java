@@ -1,6 +1,7 @@
 package moe.yiheng.pojo;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class Lottery {
@@ -36,17 +37,6 @@ public class Lottery {
         this.createdByUser = createdByUser;
     }
 
-    @Override
-    public String toString() {
-        return "Lottery{" +
-                "uuid='" + uuid + '\'' +
-                ", createdByUser=" + createdByUser +
-                ", name='" + name + '\'' +
-                ", status=" + status +
-                ", joinedUsers=" + joinedUsers +
-                '}';
-    }
-
     public String getName() {
         return name;
     }
@@ -63,4 +53,31 @@ public class Lottery {
         this.joinedUsers = joinedUsers;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Lottery lottery = (Lottery) o;
+        return Objects.equals(uuid, lottery.uuid) &&
+                Objects.equals(createdByUser, lottery.createdByUser) &&
+                Objects.equals(name, lottery.name) &&
+                Objects.equals(status, lottery.status) &&
+                Objects.equals(joinedUsers, lottery.joinedUsers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(uuid, createdByUser, name, status, joinedUsers);
+    }
+
+    @Override
+    public String toString() {
+        return "Lottery{" +
+                "uuid='" + uuid + '\'' +
+                ", createdByUser=" + createdByUser +
+                ", name='" + name + '\'' +
+                ", status=" + status +
+                ", joinedUsers=" + joinedUsers +
+                '}';
+    }
 }

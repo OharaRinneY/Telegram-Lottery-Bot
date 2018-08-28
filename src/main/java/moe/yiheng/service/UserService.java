@@ -6,4 +6,6 @@ public interface UserService {
     User findById(Integer id);
 
     void add(User user);
+
+    void update(User user);
 }

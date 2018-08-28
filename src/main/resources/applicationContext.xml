@@ -24,8 +24,8 @@
         <property name="botUsername" value="${bot_username}"/>
         <property name="botToken" value="${bot_token}"/>
     </bean>
-    <context:component-scan base-package="moe.yiheng.dao"/>
-    <context:component-scan base-package="moe.yiheng.service"/>
+
+    <context:component-scan base-package="moe.yiheng"/>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
     <bean class="org.springframework.orm.hibernate5.HibernateTransactionManager" id="transactionManager">

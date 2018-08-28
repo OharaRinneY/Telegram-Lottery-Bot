@@ -6,4 +6,6 @@ public interface UserDao {
     User findById(Integer id);
 
     void add(User user);
+
+    void update(User user);
 }
