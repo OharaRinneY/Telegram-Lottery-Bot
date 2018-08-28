@@ -18,4 +18,9 @@ public class LotteryServiceImpl implements LotteryService {
     public void save(Lottery lottery) {
         dao.save(lottery);
     }
+
+    @Override
+    public Lottery findByUuid(String uuid) {
+        return dao.findByUuid(uuid);
+    }
 }

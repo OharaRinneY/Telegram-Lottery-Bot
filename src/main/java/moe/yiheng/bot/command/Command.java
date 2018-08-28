@@ -4,8 +4,8 @@ import moe.yiheng.pojo.User;
 import org.telegram.telegrambots.api.objects.Message;
 
 public abstract class Command {
-    private Message message;
-    private User user;
+    protected Message message;
+    protected User user;
 
     public abstract void handle();
 

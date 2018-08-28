@@ -3,7 +3,7 @@ package moe.yiheng.pojo;
 import java.util.Objects;
 import java.util.Set;
 
-public class User {
+public final class User {
     private Integer id;
     private String username;
     private String firstname;

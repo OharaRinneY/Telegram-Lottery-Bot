@@ -9,8 +9,6 @@ import moe.yiheng.service.LotteryService;
 import moe.yiheng.service.UserService;
 import moe.yiheng.utils.CommonUtils;
 import moe.yiheng.utils.SpringUtils;
-import org.apache.http.impl.bootstrap.HttpServer;
-import org.hibernate.Hibernate;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Message;
 

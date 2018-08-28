@@ -11,7 +11,7 @@
         <property name="username" column="username"/>
         <property name="firstname" column="firstname"/>
         <property name="status" column="status"/>
-        <set name="joinedLotteries" table="user_lottery" >
+        <set name="joinedLotteries" table="user_lottery" lazy="false">
             <key column="user_id"/>
             <many-to-many class="moe.yiheng.pojo.Lottery" column="lottery_id"/>
         </set>

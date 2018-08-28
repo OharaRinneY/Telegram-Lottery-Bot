@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class Lottery {
+public final class Lottery {
     private String uuid;
     private User createdByUser;
     private String name;

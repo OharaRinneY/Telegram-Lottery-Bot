@@ -16,4 +16,9 @@ public class LotteryDaoImpl implements LotteryDao {
     public void save(Lottery lottery) {
         hibernateTemplate.save(lottery);
     }
+
+    @Override
+    public Lottery findByUuid(String uuid) {
+        return hibernateTemplate.get(Lottery.class, uuid);
+    }
 }
