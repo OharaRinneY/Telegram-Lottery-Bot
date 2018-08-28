@@ -1,6 +1,5 @@
 package moe.yiheng.bot.callback;
 
-import moe.yiheng.bot.Keyboards;
 import moe.yiheng.pojo.Lottery;
 import moe.yiheng.pojo.LotteryStatus;
 import moe.yiheng.pojo.User;

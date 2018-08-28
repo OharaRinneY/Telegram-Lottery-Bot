@@ -4,8 +4,6 @@ import moe.yiheng.exceptions.CallbackNotFoundException;
 import moe.yiheng.pojo.User;
 import org.telegram.telegrambots.api.objects.CallbackQuery;
 
-import java.util.Arrays;
-
 public class CallbackFactory {
 
     public static Callback getCallback(CallbackQuery callbackQuery, User user) throws CallbackNotFoundException {

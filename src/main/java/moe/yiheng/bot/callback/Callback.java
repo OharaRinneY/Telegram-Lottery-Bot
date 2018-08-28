@@ -6,7 +6,6 @@ import moe.yiheng.service.LotteryService;
 import moe.yiheng.service.UserService;
 import moe.yiheng.utils.SpringUtils;
 import org.telegram.telegrambots.api.objects.CallbackQuery;
-import org.telegram.telegrambots.api.objects.Message;
 
 public abstract class Callback {
     protected CallbackQuery callbackQuery;

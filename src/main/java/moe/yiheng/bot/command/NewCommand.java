@@ -1,18 +1,13 @@
 package moe.yiheng.bot.command;
 
-import moe.yiheng.bot.MyBot;
 import moe.yiheng.pojo.Lottery;
 import moe.yiheng.pojo.LotteryStatus;
 import moe.yiheng.pojo.User;
 import moe.yiheng.pojo.UserStatus;
-import moe.yiheng.service.LotteryService;
-import moe.yiheng.service.UserService;
 import moe.yiheng.utils.CommonUtils;
-import moe.yiheng.utils.SpringUtils;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Message;
 
-import java.util.List;
 import java.util.Set;
 
 public class NewCommand extends Command{

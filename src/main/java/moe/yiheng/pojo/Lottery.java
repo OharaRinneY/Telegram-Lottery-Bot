@@ -19,7 +19,7 @@ public final class Lottery {
         this.status = status;
     }
 
-    private Set<User> joinedUsers = new HashSet<User>();
+    private Set<User> joinedUsers = new HashSet<>();
 
     public String getUuid() {
         return uuid;

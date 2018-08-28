@@ -13,7 +13,7 @@ import org.telegram.telegrambots.exceptions.TelegramApiRequestException;
 public class Launcher implements CommandLineRunner {
 
 
-    public static void main(String[] args) throws TelegramApiRequestException {
+    public static void main(String[] args) {
         ApiContextInitializer.init();
         SpringApplication.run(Launcher.class, args);
     }

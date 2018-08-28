@@ -1,7 +1,6 @@
 package moe.yiheng.bot;
 
 import moe.yiheng.pojo.Lottery;
-import moe.yiheng.pojo.User;
 import org.telegram.telegrambots.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 

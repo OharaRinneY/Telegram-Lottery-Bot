@@ -1,12 +1,8 @@
 package moe.yiheng.bot.command;
 
-import moe.yiheng.bot.MyBot;
 import moe.yiheng.pojo.Lottery;
 import moe.yiheng.pojo.User;
-import moe.yiheng.service.LotteryService;
-import moe.yiheng.service.UserService;
 import moe.yiheng.utils.CommandUtils;
-import moe.yiheng.utils.SpringUtils;
 import org.springframework.util.StringUtils;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Message;

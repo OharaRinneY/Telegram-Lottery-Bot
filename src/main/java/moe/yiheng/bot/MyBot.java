@@ -87,9 +87,8 @@ public class MyBot extends TelegramLongPollingBot {
             return execute(method);
         } catch (TelegramApiException e) {
             e.printStackTrace();
-        } finally {
-            return null;
         }
+        return null;
     }
 
     public String getBotUsername() {
