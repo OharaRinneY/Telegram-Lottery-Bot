@@ -6,4 +6,6 @@ public interface LotteryDao {
     void save(Lottery lottery);
 
     Lottery findByUuid(String uuid);
+
+    void update(Lottery lottery);
 }

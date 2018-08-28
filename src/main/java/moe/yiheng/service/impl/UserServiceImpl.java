@@ -26,4 +26,5 @@ public class UserServiceImpl implements UserService {
     public void update(User user) {
         dao.update(user);
     }
+
 }

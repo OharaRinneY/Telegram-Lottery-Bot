@@ -23,4 +23,9 @@ public class LotteryServiceImpl implements LotteryService {
     public Lottery findByUuid(String uuid) {
         return dao.findByUuid(uuid);
     }
+
+    @Override
+    public void update(Lottery lottery) {
+        dao.update(lottery);
+    }
 }

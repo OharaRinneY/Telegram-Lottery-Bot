@@ -21,4 +21,9 @@ public class LotteryDaoImpl implements LotteryDao {
     public Lottery findByUuid(String uuid) {
         return hibernateTemplate.get(Lottery.class, uuid);
     }
+
+    @Override
+    public void update(Lottery lottery) {
+        hibernateTemplate.update(lottery);
+    }
 }

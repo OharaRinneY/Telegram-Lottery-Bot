@@ -12,6 +12,7 @@ import moe.yiheng.utils.SpringUtils;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Message;
 
+import java.util.List;
 import java.util.Set;
 
 public class NewCommand extends Command{
@@ -25,11 +26,8 @@ public class NewCommand extends Command{
     public void handle() {
         if (message.getText().equals("/new")) {
             Set<Lottery> createdLotteries = user.getCreatedLotteries();
-            int count = 0;
-            for (Lottery lottery : createdLotteries) {
-                if (lottery.getStatus() == LotteryStatus.ACTIVE.getIndex()) count++;
-            }
-            if (count >= 5) {
+            Set<Lottery> activeLotteries = CommonUtils.selectActiveLotteries(createdLotteries);
+            if (activeLotteries.size() >= 5) {
                 bot.executeWithoutException(new SendMessage(message.getChatId(), "每位用户只能创建5个抽奖"));
                 return;
             }
